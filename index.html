@@ -1,0 +1,139 @@
+<html>
+<head>
+ <title> Guest List </title>   
+</head>
+<body>
+<center>
+    <h3> Guest List </h3>
+    <br> 
+    <input type="text" placeholder="Enter Guest Name" id="s1"> <span> <button id="sub" onclick="submit()">submit</button> </span>
+<br>
+<br>
+<div id="Display_1"></div>
+<br>
+
+<h3> Guest List </h3>
+<br>
+<button id="sho" onclick="Show()"> Show </button>
+<br>
+<div id="Display_2"></div>
+<br>
+<h3> Guest List </h3>
+<button id="sor" onclick="Sort()"> Sort listed </button>
+<br>
+<br>
+<br>
+<button id="sor" onclick="Sort()"> Sort listed </button>
+<div id="Display_3"></div>
+<br>
+<br>
+<input type="text" placeholder="Search Guest" id="s2">
+<br>
+<button id="Sear" onclick="Search()">Search</button>
+<div id="Display_4"></div>
+</center>
+</body>
+<style>
+#Display_1{
+border: 2px solid aqua;
+padding: 10px;
+background-color:aliceblue;
+border-radius: 11px;
+width: 50%;
+}
+
+#Display_2{
+border: 2px solid aquamarine;
+padding: 10px;
+background-color:blueviolet;
+border-radius: 11px;
+width: 50%;
+}
+
+#sor{
+   display: none; 
+}
+
+#Display_3{
+border: 2px solid cadetblue;
+padding: 10px;
+background-color:rgb(43, 226, 217);
+border-radius: 11px;
+width: 50%;
+}
+
+#Display_4{
+border: 2px solid paleturquoise;
+padding: 10px;
+background-color:papayawhip;
+border-radius: 11px;
+width: 50%;
+}
+
+
+
+
+</style>
+
+
+
+<script>
+var gnames = [];
+var dis_array = [];
+
+
+
+function submit(){
+    var Guestname = document.getElementById("s1").value;
+    gnames.push(Guestname);
+
+    var len = gnames.length;
+    for (var i=0;i<len;i++){
+            document.getElementById('Display_1').innerHTML = gnames;
+                }
+}
+
+function Show(){
+
+    var Guestname = document.getElementById("s1").value;
+    gnames.push(Guestname);
+
+    var len = gnames.length;
+    for (var i=0;i<len;i++){
+        dis_array.push("<h4> NAME - "+gnames[i]+"</h4>");
+         }
+    document.getElementById('Display_2').innerHTML = dis_array;
+   // var rc = dis_array.join(" ");
+    //document.getElementById('Display_2').innerHTML = rc;
+   document.getElementById('sor').style.display = 'inline';
+
+    }
+
+    function Sort(){
+
+        dis_array.sort();
+        console.log(dis_array);
+        document.getElementById('Display_3').innerHTML = dis_array;
+        var rc = dis_array.join(" ");
+        document.getElementById('Display_3').innerHTML = rc;
+
+    }
+
+    function Search(){
+
+    var s =document.getElementById("s1").value;
+    var found=0;
+    var j;
+    for(j=0; j<gnames.length; j++)
+    {
+        if(s==gnames[j]){
+         found=found+1;
+        }
+    }
+ document.getElementById("Display_4").innerHTML = "name found "+found+"times";
+ console.log("found name "+found+"time/s");
+    }
+
+</script>
+
+</html>
